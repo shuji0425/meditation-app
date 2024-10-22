@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    volumes:
+      - ./frontend:/app:cached # ローカルファイルとコンテナのファイル同期を効率化
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
