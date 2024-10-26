@@ -1,5 +1,5 @@
 # ベースイメージを指定
-FROM node:lts-alpine
+FROM node:lts
 
 # アプリケーションコードをコンテナにコピー
 WORKDIR /app
