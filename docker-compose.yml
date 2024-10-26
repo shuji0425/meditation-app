@@ -1,10 +1,17 @@
 version: '3.8'
 services:
-  app:
-    build: .
+  client:
+    build:
+      context: ./client
     volumes:
-      - ./frontend:/app:cached # ローカルファイルとコンテナのファイル同期を効率化
+      - ./client:/app
     ports:
-      - "3001:3000"
-    environment:
-      - NODE_ENV=development
+      - "19000:19000"
+
+  server:
+    build:
+      context: ./server
+    volumes:
+      - ./server:/app
+    ports:
+      - "3000:3000"  # API用ポート
