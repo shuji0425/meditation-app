@@ -1,8 +1,12 @@
-.PHONY:expo-start start stop clean
+.PHONY:expo-start start stop clean build
 
 # Expoを起動する
 expo-start:
 	cd client && npm start
+
+# build
+build:
+	docker-compose up --build
 
 # サーバーを起動
 start:
