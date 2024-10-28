@@ -1,5 +1,5 @@
 # ベースイメージを指定
-FROM node:lts-alpine
+FROM node:lts
 
 # アプリケーションコードをコンテナにコピー
 WORKDIR /app
@@ -13,8 +13,11 @@ RUN npm install
 # 残りのプロジェクトファイルをコピー
 COPY . .
 
+# コンパイル
+RUN npx tsc
+
 # サーバーを起動するポートを公開
 EXPOSE 3000
 
 # サーバーを起動
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
