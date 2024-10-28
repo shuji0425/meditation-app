@@ -19,3 +19,6 @@ stop:
 # コンテナのクリーンアップ
 clean:
 	docker-compose down --volumes --remove-orphans
+
+node-compile:
+	cd server && npx tsc
