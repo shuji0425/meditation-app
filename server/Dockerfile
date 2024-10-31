@@ -10,6 +10,9 @@ COPY package*.json ./
 # 依存関係をインストール（キャッシュを活用）
 RUN npm install
 
+# コンパイル用
+RUN npm install -g ts-node-dev
+
 # 残りのプロジェクトファイルをコピー
 COPY . .
 
@@ -20,4 +23,4 @@ RUN npx tsc
 EXPOSE 3000
 
 # サーバーを起動
-CMD ["npm", "start"]
+CMD ["ts-node-dev", "--respawn", "--transpile-only", "src/server.ts"]

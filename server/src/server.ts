@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { fetchPlaceholderData } from './placeholder';
+import { getHeartrateData } from './oura-api';
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,15 @@ app.get('/placeholder', async (req, res) => {
         res.json(data);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch placeholder data" });
+    }
+});
+
+app.get('/oura/heartrate', async (req, res) => {
+    try {
+        const data = await getHeartrateData();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: "Failed to fetch oura Heartrate data" });
     }
 });
 
